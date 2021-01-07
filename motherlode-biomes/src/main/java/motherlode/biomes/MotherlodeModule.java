@@ -3,6 +3,7 @@ package motherlode.biomes;
 import net.minecraft.util.Identifier;
 import net.fabricmc.api.ModInitializer;
 import motherlode.base.Motherlode;
+import motherlode.biomes.world.MotherlodeBiomeConfiguredFeatures;
 import motherlode.biomes.world.MotherlodeBiomeFeatures;
 import motherlode.biomes.world.MotherlodeBiomes;
 import motherlode.biomes.world.MotherlodeStructures;
@@ -14,7 +15,8 @@ public class MotherlodeModule implements ModInitializer {
     @Override
     public void onInitialize() {
         MotherlodeBiomesBlocks.init();
-        MotherlodeBiomeFeatures.register();
+        MotherlodeBiomeFeatures.init();
+        MotherlodeBiomeConfiguredFeatures.register();
         MotherlodeStructures.init();
         MotherlodeBiomes.init();
     }

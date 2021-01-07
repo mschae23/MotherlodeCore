@@ -18,6 +18,7 @@ public class MotherlodeWorldType extends GeneratorType {
 
     public MotherlodeWorldType() {
         super(MotherlodeModule.MODID + ".motherlode");
+        GeneratorType.VALUES.add(this);
     }
 
     @Override

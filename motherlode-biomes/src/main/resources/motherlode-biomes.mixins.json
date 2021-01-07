@@ -6,7 +6,8 @@
     "defaultRequire": 1
   },
   "client": [
-    "BackgroundRendererMixin"
+    "BackgroundRendererMixin",
+    "DefaultBiomeCreatorAccessor"
   ],
   "mixins": [
   ]
