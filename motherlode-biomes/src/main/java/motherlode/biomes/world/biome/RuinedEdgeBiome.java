@@ -1,4 +1,4 @@
-package motherlode.biomes.world;
+package motherlode.biomes.world.biome;
 
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;

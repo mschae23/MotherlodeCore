@@ -8,6 +8,8 @@ import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import motherlode.base.Motherlode;
 import motherlode.biomes.MotherlodeModule;
+import motherlode.biomes.world.biome.RuinedEdgeBiome;
+import motherlode.biomes.world.biome.RuinedFlatsBiome;
 
 public class MotherlodeBiomes {
     public static final RegistryKey<Biome> RUINED_FLATS = register("ruined_flats", RuinedFlatsBiome.create());

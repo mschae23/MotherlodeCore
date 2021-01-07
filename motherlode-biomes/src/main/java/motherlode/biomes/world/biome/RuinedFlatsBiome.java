@@ -1,4 +1,4 @@
-package motherlode.biomes.world;
+package motherlode.biomes.world.biome;
 
 import java.awt.Color;
 import java.util.Random;
@@ -20,6 +20,8 @@ import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import motherlode.biomes.MotherlodeBiomesBlocks;
+import motherlode.biomes.world.MotherlodeBiomeFeatures;
+import motherlode.biomes.world.MotherlodeStructures;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 public class RuinedFlatsBiome {

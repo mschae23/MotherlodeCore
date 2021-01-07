@@ -1,5 +1,9 @@
 version = "1.0.0+$project.minecraft_version"
 
+minecraft {
+    accessWidener = file "src/main/resources/motherlode-biomes.accesswidener"
+}
+
 dependencies {
     implementation project(path: ":motherlode-base", configuration: "dev")
 }
