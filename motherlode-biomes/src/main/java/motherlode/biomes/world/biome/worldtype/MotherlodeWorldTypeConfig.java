@@ -103,6 +103,13 @@ public final class MotherlodeWorldTypeConfig {
         new BiomeCategory(MotherlodeBiomes.EXTREME_MOUNTAINS, "mountains"),
         new BiomeCategory(MotherlodeBiomes.GRAVEL_MOUNTAINS, "mountains"),
         new BiomeCategory(MotherlodeBiomes.EXTREME_GRAVEL_MOUNTAINS, "mountains"),
+        new BiomeCategory(MotherlodeBiomes.MOUNTAIN_PEAK, "mountains"),
+        new BiomeCategory(MotherlodeBiomes.GRAVEL_MOUNTAIN_PEAK, "mountains"),
+        new BiomeCategory(MotherlodeBiomes.BOREAL_FOREST, "boreal_forest"),
+        new BiomeCategory(MotherlodeBiomes.BOREAL_FOREST_HILLS, "boreal_forest"),
+        new BiomeCategory(MotherlodeBiomes.BOREAL_FOREST_MOUNTAINS, "boreal_forest"),
+        new BiomeCategory(MotherlodeBiomes.PLAINS, "plains"),
+        new BiomeCategory(MotherlodeBiomes.MEADOW, "plains"),
         new BiomeCategory(MotherlodeBiomes.DECIDUOUS_FOREST, "forest"),
         new BiomeCategory(MotherlodeBiomes.DECIDUOUS_FOREST_HILLS, "forest")
     );
@@ -112,9 +119,9 @@ public final class MotherlodeWorldTypeConfig {
     );
 
     public static final ClimateConfig MOTHERLODE_CLIMATES = new ClimateConfig(
-        1, 1, 4,
-        7,
-        2,
+        2, 1, 3,
+        6,
+        3,
         100
     );
 
@@ -129,7 +136,7 @@ public final class MotherlodeWorldTypeConfig {
                 2
             ),
             new BiomeWeightEntry(
-                BiomeKeys.PLAINS,
+                MotherlodeBiomes.PLAINS,
                 1
             )
         ),
@@ -143,7 +150,7 @@ public final class MotherlodeWorldTypeConfig {
                 1
             ),
             new BiomeWeightEntry(
-                BiomeKeys.PLAINS,
+                MotherlodeBiomes.PLAINS,
                 1
             ),
             new BiomeWeightEntry(
@@ -165,11 +172,11 @@ public final class MotherlodeWorldTypeConfig {
                 1
             ),
             new BiomeWeightEntry(
-                BiomeKeys.TAIGA,
+                MotherlodeBiomes.BOREAL_FOREST,
                 1
             ),
             new BiomeWeightEntry(
-                BiomeKeys.PLAINS,
+                MotherlodeBiomes.PLAINS,
                 1)
         ),
         ImmutableList.of(// Snowy biomes
@@ -199,10 +206,10 @@ public final class MotherlodeWorldTypeConfig {
             )
         ),
         ImmutableList.of(// Special cool biomes
-            new BiomeWeightEntry(
-                BiomeKeys.GIANT_TREE_TAIGA,
-                1
-            )
+        /* new BiomeWeightEntry(
+               BiomeKeys.GIANT_TREE_TAIGA,
+               1
+        ) */
         ),
         ImmutableList.of(// Special snowy biomes
         ),
@@ -212,16 +219,16 @@ public final class MotherlodeWorldTypeConfig {
                 1
             )
         ),
-        BiomeKeys.PLAINS
+        MotherlodeBiomes.PLAINS
     );
 
     public static final List<SpecialHillBiomeEntry> MOTHERLODE_SPECIAL_HILL_BIOMES = ImmutableList.of(
-        new SpecialHillBiomeEntry(BiomeKeys.PLAINS, BiomeKeys.SUNFLOWER_PLAINS),
+        // new SpecialHillBiomeEntry(MotherlodeBiomes.PLAINS, BiomeKeys.SUNFLOWER_PLAINS),
         new SpecialHillBiomeEntry(BiomeKeys.DESERT, BiomeKeys.DESERT_LAKES),
         new SpecialHillBiomeEntry(MotherlodeBiomes.MOUNTAINS, MotherlodeBiomes.GRAVEL_MOUNTAINS),
         new SpecialHillBiomeEntry(MotherlodeBiomes.EXTREME_MOUNTAINS, MotherlodeBiomes.EXTREME_GRAVEL_MOUNTAINS),
         new SpecialHillBiomeEntry(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST),
-        new SpecialHillBiomeEntry(BiomeKeys.TAIGA, BiomeKeys.TAIGA_MOUNTAINS),
+        new SpecialHillBiomeEntry(MotherlodeBiomes.BOREAL_FOREST, MotherlodeBiomes.BOREAL_FOREST_MOUNTAINS),
         new SpecialHillBiomeEntry(BiomeKeys.SWAMP, BiomeKeys.SWAMP_HILLS),
         new SpecialHillBiomeEntry(BiomeKeys.JUNGLE, BiomeKeys.MODIFIED_JUNGLE),
         new SpecialHillBiomeEntry(BiomeKeys.JUNGLE_EDGE, BiomeKeys.MODIFIED_JUNGLE_EDGE),
@@ -242,8 +249,8 @@ public final class MotherlodeWorldTypeConfig {
         new HillBiomeEntry(BiomeKeys.DESERT, BiomeKeys.DESERT_HILLS),
         new HillBiomeEntry(BiomeKeys.FOREST, BiomeKeys.WOODED_HILLS),
         new HillBiomeEntry(MotherlodeBiomes.DECIDUOUS_FOREST, MotherlodeBiomes.DECIDUOUS_FOREST_HILLS),
-        new HillBiomeEntry(BiomeKeys.DARK_FOREST, BiomeKeys.PLAINS),
-        new HillBiomeEntry(BiomeKeys.TAIGA, BiomeKeys.TAIGA_HILLS),
+        new HillBiomeEntry(BiomeKeys.DARK_FOREST, MotherlodeBiomes.PLAINS),
+        new HillBiomeEntry(MotherlodeBiomes.BOREAL_FOREST, MotherlodeBiomes.BOREAL_FOREST_HILLS),
         new HillBiomeEntry(BiomeKeys.GIANT_TREE_TAIGA, BiomeKeys.GIANT_TREE_TAIGA_HILLS),
         new HillBiomeEntry(MotherlodeBiomes.ARCTIC_FOREST, MotherlodeBiomes.ARCTIC_FOREST_HILLS),
         new HillBiomeEntry(MotherlodeBiomes.ARCTIC_TUNDRA, MotherlodeBiomes.ARCTIC_TUNDRA_HILLS),
@@ -281,7 +288,7 @@ public final class MotherlodeWorldTypeConfig {
             ),
             new EdgeBiomesConfig.CategoryEdgeBiome(
                 BiomeKeys.GIANT_TREE_TAIGA,
-                BiomeKeys.TAIGA
+                MotherlodeBiomes.BOREAL_FOREST
             )
         ),
         ImmutableList.of(
@@ -300,7 +307,7 @@ public final class MotherlodeWorldTypeConfig {
                     MotherlodeBiomes.ARCTIC_FOREST,
                     MotherlodeBiomes.ARCTIC_FOREST_HILLS
                 ),
-                BiomeKeys.TAIGA
+                MotherlodeBiomes.BOREAL_FOREST
             ),
             new EdgeBiomesConfig.EdgeBiome(
                 BiomeKeys.SWAMP,
@@ -311,7 +318,7 @@ public final class MotherlodeWorldTypeConfig {
                     MotherlodeBiomes.ARCTIC_FOREST,
                     MotherlodeBiomes.ARCTIC_FOREST_HILLS
                 ),
-                BiomeKeys.PLAINS
+                MotherlodeBiomes.PLAINS
             ),
             new EdgeBiomesConfig.EdgeBiome(
                 BiomeKeys.SWAMP,
@@ -364,7 +371,8 @@ public final class MotherlodeWorldTypeConfig {
                 BiomeKeys.MODIFIED_JUNGLE,
                 BiomeKeys.MODIFIED_JUNGLE_EDGE,
                 BiomeKeys.FOREST,
-                BiomeKeys.TAIGA
+                MotherlodeBiomes.BOREAL_FOREST,
+                MotherlodeBiomes.BOREAL_FOREST_HILLS
             ),
             BiomeKeys.JUNGLE_EDGE,
             true,
@@ -397,7 +405,9 @@ public final class MotherlodeWorldTypeConfig {
                 MotherlodeBiomes.MOUNTAIN_FOREST,
                 MotherlodeBiomes.EXTREME_MOUNTAINS,
                 MotherlodeBiomes.GRAVEL_MOUNTAINS,
-                MotherlodeBiomes.EXTREME_GRAVEL_MOUNTAINS
+                MotherlodeBiomes.EXTREME_GRAVEL_MOUNTAINS,
+                MotherlodeBiomes.MOUNTAIN_PEAK,
+                MotherlodeBiomes.GRAVEL_MOUNTAIN_PEAK
             ),
             MotherlodeBiomes.MOUNTAINS_EDGE,
             true,
@@ -499,7 +509,7 @@ public final class MotherlodeWorldTypeConfig {
         MOTHERLODE_HILL_BIOMES,
         ImmutableList.of(
             new InnerBiomeConfig(
-                BiomeKeys.PLAINS,
+                MotherlodeBiomes.PLAINS,
                 MotherlodeBiomes.MEADOW,
                 19
             ),
@@ -523,11 +533,23 @@ public final class MotherlodeWorldTypeConfig {
             BiomeKeys.FROZEN_OCEAN
         ),
         BiomeKeys.FOREST,
-        BiomeKeys.PLAINS
+        BiomeKeys.PLAINS,
+        ImmutableList.of(
+            new InnerBiomeConfig(
+                MotherlodeBiomes.EXTREME_MOUNTAINS,
+                MotherlodeBiomes.MOUNTAIN_PEAK,
+                5
+            ),
+            new InnerBiomeConfig(
+                MotherlodeBiomes.EXTREME_GRAVEL_MOUNTAINS,
+                MotherlodeBiomes.GRAVEL_MOUNTAIN_PEAK,
+                5
+            )
+        )
     );
 
     public static final BiomeSizeConfig MOTHERLODE_BIOME_SIZE = new BiomeSizeConfig(
-        4, 1, 7
+        1, 1, 7
     );
 
     public static final List<RiverConfig.Override> MOTHERLODE_RIVER_OVERRIDES = ImmutableList.of(

@@ -117,19 +117,14 @@ public class MotherlodeBiomeLayers {
         biomes = stack(1000L, normalScaleLayer, biomes, 2, contextProvider);
         biomes = new AddEdgeBiomesLayer(categories, config.getBiomeEdges()).create(contextProvider.apply(1000L), biomes);
         biomes = new AddHillsLayer(categories, config.getHillBiomes()).create(mergingNoiseContextProvider.apply(1000L), biomes, hillLayer);
+        biomes = new AddInnerBiomesLayer(config.getPatchInnerBiomes()).create(contextProvider.apply(1001L), biomes);
+        biomes = normalScaleLayer.create(contextProvider.apply(1000L), biomes);
+        biomes = new IncreaseEdgeCurvatureBiomeLayer(config.getShallowOceanBiomes(), config.getForestBiome(), config.getPlainsBiome()).create(contextProvider.apply(3L), biomes);
+        biomes = new AddShoresLayer(categories, oceanCategory, config.getShoreBiomes()).create(contextProvider.apply(1000L), biomes);
+        biomes = normalScaleLayer.create(contextProvider.apply(1000L), biomes);
         biomes = new AddInnerBiomesLayer(config.getSpotInnerBiomes()).create(contextProvider.apply(1001L), biomes);
 
-        for (int i = 0; i < biomeScale; i++) {
-            biomes = normalScaleLayer.create(contextProvider.apply((1000 + i)), biomes);
-            if (i == 0) {
-                biomes = new IncreaseEdgeCurvatureBiomeLayer(config.getShallowOceanBiomes(), config.getForestBiome(), config.getPlainsBiome()).create(contextProvider.apply(3L), biomes);
-            }
-
-            if (i == 1 || biomeScale == 1) {
-                biomes = new AddShoresLayer(categories, oceanCategory, config.getShoreBiomes()).create(contextProvider.apply(1000L), biomes);
-            }
-        }
-
+        biomes = stack(1000, normalScaleLayer, biomes, biomeScale, contextProvider);
         biomes = new SmoothLayer<RegistryKey<Biome>>().create(contextProvider.apply(1000L), biomes);
 
         return biomes;
@@ -163,8 +158,7 @@ public class MotherlodeBiomeLayers {
     public static <T extends LayerSampler<Integer>, C extends LayerSampleContext<Integer, Integer, Integer, T, T, T>> LayerFactory<Integer, T> buildRiverLayerFactory(LayerFactory<Integer, T> noiseLayer, int riverSize, LongFunction<C> contextProvider) {
         ScaleLayer<Integer> normalScaleLayer = ScaleLayer.normal();
 
-        LayerFactory<Integer, T> rivers = stack(1000L, normalScaleLayer, noiseLayer, 2, contextProvider);
-        rivers = stack(1000L, normalScaleLayer, rivers, riverSize, contextProvider);
+        LayerFactory<Integer, T> rivers = stack(1000L, normalScaleLayer, noiseLayer, riverSize + 4, contextProvider);
         rivers = NoiseToRiverLayer.INSTANCE.create(contextProvider.apply(1L), rivers);
         rivers = new SmoothLayer<Integer>().create(contextProvider.apply(1000L), rivers);
 

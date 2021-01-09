@@ -20,11 +20,12 @@ public class BiomeLayoutConfig {
             InnerBiomeConfig.CODEC.listOf().fieldOf("large_inner_biomes").forGetter(BiomeLayoutConfig::getLargeInnerBiomes),
             EdgeBiomesConfig.CODEC.fieldOf("biome_edges").forGetter(BiomeLayoutConfig::getBiomeEdges),
             HillBiomesConfig.CODEC.fieldOf("hill_biomes").forGetter(BiomeLayoutConfig::getHillBiomes),
-            InnerBiomeConfig.CODEC.listOf().fieldOf("spot_inner_biomes").forGetter(BiomeLayoutConfig::getSpotInnerBiomes),
+            InnerBiomeConfig.CODEC.listOf().fieldOf("patch_inner_biomes").forGetter(BiomeLayoutConfig::getPatchInnerBiomes),
             ShoreBiomesConfig.CODEC.fieldOf("shore_biomes").forGetter(BiomeLayoutConfig::getShoreBiomes),
             RegistryKeys.BIOME_LIST_CODEC.fieldOf("shallow_ocean_biomes").forGetter(BiomeLayoutConfig::getShallowOceanBiomes),
             RegistryKeys.BIOME_CODEC.fieldOf("forest_biome").forGetter(BiomeLayoutConfig::getForestBiome),
-            RegistryKeys.BIOME_CODEC.fieldOf("plains_biome").forGetter(BiomeLayoutConfig::getPlainsBiome)
+            RegistryKeys.BIOME_CODEC.fieldOf("plains_biome").forGetter(BiomeLayoutConfig::getPlainsBiome),
+            InnerBiomeConfig.CODEC.listOf().fieldOf("spot_inner_biomes").forGetter(BiomeLayoutConfig::getSpotInnerBiomes)
         ).apply(instance, instance.stable(BiomeLayoutConfig::new))
     );
 
@@ -32,22 +33,24 @@ public class BiomeLayoutConfig {
     private final List<InnerBiomeConfig> largeInnerBiomes;
     private final EdgeBiomesConfig biomeEdges;
     private final HillBiomesConfig hillBiomes;
-    private final List<InnerBiomeConfig> spotInnerBiomes;
+    private final List<InnerBiomeConfig> patchInnerBiomes;
     private final ShoreBiomesConfig shoreBiomes;
     private final List<RegistryKey<Biome>> shallowOceanBiomes;
     private final RegistryKey<Biome> forestBiome;
     private final RegistryKey<Biome> plainsBiome;
+    private final List<InnerBiomeConfig> spotInnerBiomes;
 
-    public BiomeLayoutConfig(BaseBiomesConfig baseBiomes, List<InnerBiomeConfig> largeInnerBiomes, EdgeBiomesConfig biomeEdges, HillBiomesConfig hillBiomes, List<InnerBiomeConfig> spotInnerBiomes, ShoreBiomesConfig shoreBiomes, List<RegistryKey<Biome>> shallowOceanBiomes, RegistryKey<Biome> forestBiome, RegistryKey<Biome> plainsBiome) {
+    public BiomeLayoutConfig(BaseBiomesConfig baseBiomes, List<InnerBiomeConfig> largeInnerBiomes, EdgeBiomesConfig biomeEdges, HillBiomesConfig hillBiomes, List<InnerBiomeConfig> patchInnerBiomes, ShoreBiomesConfig shoreBiomes, List<RegistryKey<Biome>> shallowOceanBiomes, RegistryKey<Biome> forestBiome, RegistryKey<Biome> plainsBiome, List<InnerBiomeConfig> spotInnerBiomes) {
         this.baseBiomes = baseBiomes;
         this.largeInnerBiomes = largeInnerBiomes;
         this.biomeEdges = biomeEdges;
         this.hillBiomes = hillBiomes;
-        this.spotInnerBiomes = spotInnerBiomes;
+        this.patchInnerBiomes = patchInnerBiomes;
         this.shoreBiomes = shoreBiomes;
         this.shallowOceanBiomes = shallowOceanBiomes;
         this.forestBiome = forestBiome;
         this.plainsBiome = plainsBiome;
+        this.spotInnerBiomes = spotInnerBiomes;
     }
 
     public BaseBiomesConfig getBaseBiomes() {
@@ -66,8 +69,8 @@ public class BiomeLayoutConfig {
         return this.hillBiomes;
     }
 
-    public List<InnerBiomeConfig> getSpotInnerBiomes() {
-        return this.spotInnerBiomes;
+    public List<InnerBiomeConfig> getPatchInnerBiomes() {
+        return this.patchInnerBiomes;
     }
 
     public ShoreBiomesConfig getShoreBiomes() {
@@ -86,13 +89,18 @@ public class BiomeLayoutConfig {
         return this.plainsBiome;
     }
 
+    public List<InnerBiomeConfig> getSpotInnerBiomes() {
+        return this.spotInnerBiomes;
+    }
+
     public List<Supplier<Biome>> getBiomes(Registry<Biome> biomeRegistry) {
         List<Supplier<Biome>> biomes = this.getBaseBiomes().getBiomes(biomeRegistry);
         biomes.addAll(InnerBiomeConfig.getBiomes(this.getLargeInnerBiomes(), biomeRegistry));
         biomes.addAll(this.getBiomeEdges().getBiomes(biomeRegistry));
         biomes.addAll(this.getHillBiomes().getBiomes(biomeRegistry));
-        biomes.addAll(InnerBiomeConfig.getBiomes(this.getSpotInnerBiomes(), biomeRegistry));
+        biomes.addAll(InnerBiomeConfig.getBiomes(this.getPatchInnerBiomes(), biomeRegistry));
         biomes.addAll(this.getShoreBiomes().getBiomes(biomeRegistry));
+        biomes.addAll(InnerBiomeConfig.getBiomes(this.getSpotInnerBiomes(), biomeRegistry));
 
         return biomes;
     }
