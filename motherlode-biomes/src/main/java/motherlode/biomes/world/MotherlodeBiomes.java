@@ -13,8 +13,10 @@ import motherlode.biomes.world.biome.ArcticForestBiome;
 import motherlode.biomes.world.biome.ArcticTundraBiome;
 import motherlode.biomes.world.biome.BorealForestBiome;
 import motherlode.biomes.world.biome.DeciduousForestBiome;
+import motherlode.biomes.world.biome.LakeBiome;
 import motherlode.biomes.world.biome.MeadowBiome;
 import motherlode.biomes.world.biome.MountainsBiome;
+import motherlode.biomes.world.biome.OasisBiome;
 import motherlode.biomes.world.biome.PlainsBiome;
 import motherlode.biomes.world.biome.RuinedEdgeBiome;
 import motherlode.biomes.world.biome.RuinedFlatsBiome;
@@ -49,6 +51,12 @@ public class MotherlodeBiomes {
 
     public static final RegistryKey<Biome> DECIDUOUS_FOREST = register("deciduous_forest", DeciduousForestBiome.create(0.1f, 0.2f));
     public static final RegistryKey<Biome> DECIDUOUS_FOREST_HILLS = register("deciduous_forest_hills", DeciduousForestBiome.create(0.45f, 0.3f));
+
+    public static final RegistryKey<Biome> WARM_LAKE = register("warm_lake", LakeBiome.create(-0.9f, 0.1f, LakeBiome.Type.WARM));
+    public static final RegistryKey<Biome> LAKE = register("lake", LakeBiome.create(-0.9f, 0.1f, LakeBiome.Type.NORMAL));
+    public static final RegistryKey<Biome> COLD_LAKE = register("cold_lake", LakeBiome.create(-0.9f, 0.1f, LakeBiome.Type.COLD));
+
+    public static final RegistryKey<Biome> OASIS = register("oasis", OasisBiome.create(0.12f, 0.04f));
 
     @SuppressWarnings("deprecation")
     public static void init() {

@@ -23,6 +23,8 @@ public class AddSpecialBiomesLayer implements IdentitySamplingLayer<ClimateCateg
                     return ClimateCategory.SPECIAL_COOL;
                 case SNOWY:
                     return ClimateCategory.SPECIAL_SNOWY;
+                default:
+                    // Fall through
             }
         }
 
