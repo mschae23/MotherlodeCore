@@ -10,7 +10,6 @@ pluginManagement {
 }
 rootProject.name = "motherlode"
 
-include 'motherlode-base'
 include 'motherlode-materials'
 // include 'motherlode-ender-invasion'
 include 'motherlode-copper-dungeon'

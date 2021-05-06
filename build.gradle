@@ -16,12 +16,20 @@ allprojects {
 
     repositories {
         maven {
-            name = "Ladysnake Libs"
+            name = 'GitHub Package Registry (TeamMotherlode)'
+            url = 'https://maven.pkg.github.com/TeamMotherlode/_'
+            credentials {
+                username = project.findProperty('gpr.user') ?: System.getenv('GITHUB_USERNAME')
+                password = project.findProperty('gpr.key') ?: System.getenv('GITHUB_TOKEN')
+            }
+        }
+        maven {
+            name = 'Ladysnake Libs'
             url = 'https://dl.bintray.com/ladysnake/libs'
         }
         maven {
             name = 'CottonMC'
-            url = 'https://server.bbkr.space/artifactory/libs-release'
+            url = 'http://server.bbkr.space:8081/artifactory/libs-release'
         }
         maven {
             name = 'TerraformersMC'
@@ -77,6 +85,8 @@ allprojects {
         minecraft "com.mojang:minecraft:${project.minecraft_version}"
         mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
         modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+        modImplementation "motherlode:motherlode-base:${project.motherlode_base_version}"
 
         tap(rootProject.ext.setDefaultApis)
     }
